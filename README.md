@@ -1,4 +1,4 @@
-## Sprint 2 : Develop Interactive Template-Driven Forms Inside SPA
+## Sprint 2: Develop Interactive Template-Driven Forms Inside SPA
 
 ### This sprint has 4 demos
 
@@ -35,7 +35,7 @@ Perform the followign steps:
     - Note: Angular pipes are used in template expressions to transform strings, currency amounts, and other data for display. The json pipe serializes data to a string at the top of the component's template.  
      
 
-[**Demo 2 ::Track Form and Form Control Status in Profile Form**](demo-2-track-user-form-status)
+[**Demo 2: Track Form and Form Control Status in Profile Form**](demo-2-track-user-form-status)
 
 Access the ngForm instance using the local template variable to retrieve the form status. of user profile form. ​Provide visual feedback for invalid status of form controls by accessing them using template reference variable and changing their appearance.
 
@@ -105,7 +105,7 @@ Perform the following steps:
 - Check that the form submit button is disabled when the field values are “touched”, “dirty”, and “invalid”. 
 - Check that when all the required fields are in “valid” state, the submit button is enabled and an alert message is generated on successful form submission. 
 
-[**Demo 3 :: Add Fruit Form in Fruit Fantasy App**](demo-3-add-fruit-form)
+[**Demo 3: Add Fruit Form in Fruit Fantasy App**](demo-3-add-fruit-form)
 
 Modify the add fruit form created in the previous sprint to have various form fields like fruit name, price, unit, nutrients and benefits.​
 
@@ -140,7 +140,7 @@ Perform the following steps:
 - Add `<button>` of type “submit” to enable form submission.​ 
 ```html
     <button color="primary" mat-fab type="submit">
-            <mat-icon>add</mat-icon>
+        <mat-icon>add</mat-icon>
     </button>
 ```
 - Define the constructor to create a “MatSnackBar” instance:​ 
@@ -148,7 +148,7 @@ Perform the following steps:
     constructor (private _snackBar: MatSnackBar){ } 
 - Successful form submission should result in a “Fruits added successfully” message and an unsuccessful submission should result in a “Failed to add fruit due a network error!! Please try again later” message. Inside the `onSubmit()` method, the service method is used to store the captured form details in the json server.  
 
-[**Demo 4 ::Add Validators in Fruit Fantasy App**](demo-4-validate-fruit-form)
+[**Demo 4: Add Validators in Fruit Fantasy App**](demo-4-validate-fruit-form)
 
 Add Built-in validators like required, minlength and pattern to add fruit form to validate various form control elements. Display custom error messages for each of the invalid status of form controls.
 
@@ -161,21 +161,20 @@ Perform the following steps;
 - The “*ngIf” directive on the `<div>` element reveals a set of nested message elements provided the name is invalid and the control is either dirty or touched. Each nested `<div>` can present a custom message for one of the possible validation errors. 
 
 ```html
-        <input matInput name="fruitname" required minlength="3" [(ngModel)]="fruit.name" type="text"
-                #fruitname="ngModel" placeholder="Name">
-            <div *ngIf="fruitname?.invalid && (fruitname?.dirty || fruitname?.touched)">
-                <div *ngIf="fruitname.errors?.required">
-                    Fruit name is required
-                </div>
-                <div *ngIf="fruitname.errors?.minlength">
-                    Fruit Name Minimum Length is {{fruitname.errors?.minlength?.requiredLength}}
-                </div>
-            </div>
+    <input matInput name="fruitname" required minlength="3" [(ngModel)]="fruit.name" type="text" #fruitname="ngModel" placeholder="Name">
+    <div *ngIf="fruitname?.invalid && (fruitname?.dirty || fruitname?.touched)">
+        <div *ngIf="fruitname.errors?.required">
+           Fruit name is required
+        </div>
+         <div *ngIf="fruitname.errors?.minlength">
+           Fruit Name Minimum Length is {{fruitname.errors?.minlength?requiredLength}}
+        </div>
+    </div>
 ```
 - Display validation error messages through the error object. 
 - Disable the Submit button by adding the “disabled” attribute when the form status is invalid. 
 ```html
     <button color="primary" mat-raised-button type="submit" [disabled]="!addForm.valid">
-                Add
+        Add
     </button>
 ```
