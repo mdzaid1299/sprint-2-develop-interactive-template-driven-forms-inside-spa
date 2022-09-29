@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <span class="mx-3 navbar-brand">User Profile Form</span>
+</nav>
+<div class="container">
+    <div class="main card m-3 ">
+        <h5 class="card-header">Registration Form</h5>
+        <div class="card-body">
+            {{user|json}}
+            <form (ngSubmit)="onSubmit()" class="form-inline" novalidate>
+
+                <div class="col">
+                    <label>User Name</label>
+                    <input type="text" name="usenname" class="form-control" [(ngModel)]="user.username" >
+                </div>
+                <div class="col">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" [(ngModel)]="user.email" >
+                </div>
+                <div class="col">
+                    <label>Phone</label>
+                    <input type="text" name="phone" class="form-control" [(ngModel)]="user.phone" >
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-secondary p-2" type="reset">Cancel</button>
+                    <button type="submit" class="btn btn-primary m-3 p-2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

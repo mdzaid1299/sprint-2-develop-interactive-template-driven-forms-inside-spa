@@ -1,0 +1,52 @@
+<div id="add-fruit">
+    <form (ngSubmit)="onSubmit(addForm)" #addForm="ngForm">
+        <mat-form-field class="input-field" appearance="legacy">
+            <input matInput name="fruitname" required minlength="3" [(ngModel)]="fruit.name" type="text"
+                #fruitname="ngModel" placeholder="Name">
+            <div *ngIf="fruitname?.invalid && (fruitname?.dirty || fruitname?.touched)">
+                <div *ngIf="fruitname.errors?.required">
+                    Fruit name is required
+                </div>
+                <div *ngIf="fruitname.errors?.minlength">
+                    Fruit Name Minimum Length is {{fruitname.errors?.minlength?.requiredLength}}
+                </div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="input-field" appearance="legacy">
+            <input matInput required name="price" #price=ngModel [(ngModel)]="fruit.price" type="text"
+            pattern="^\d*(\.\d{0,2})?$" placeholder="Price ($)0.00">
+            <div *ngIf="!price?.valid && (price?.dirty || price?.touched)">
+                <div *ngIf="price.errors?.required">
+                    Fruit price is required
+                </div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="input-field" appearance="legacy">
+            <input matInput required name="unit" #unit=ngModel [(ngModel)]="fruit.unit" type="text"
+                placeholder="Unit (pound / piece)">
+            <div *ngIf="!unit?.valid && (unit?.dirty || unit?.touched)">
+                <div *ngIf="unit.errors?.required">
+                    Fruit unit is required
+                </div>
+            </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nutrients</mat-label>
+            <mat-select id="nutrient" name="nutrient" [(ngModel)]="fruit.nutrients" multiple>
+                <mat-option *ngFor="let nutrient of nutrients" [value]="nutrient">{{nutrient}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Benefits</mat-label>
+            <mat-select id="benefit" name="benefit" [(ngModel)]="fruit.benefits" multiple>
+                <mat-option *ngFor="let benefit of benefits" [value]="benefit">{{benefit}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div>
+            <button color="primary" mat-raised-button type="submit" [disabled]="!addForm.valid">
+                Add
+            </button>
+        </div>
+
+    </form>
+</div>

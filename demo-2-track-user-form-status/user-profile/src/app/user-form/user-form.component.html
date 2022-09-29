@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <span class="mx-3 navbar-brand">User Profile Form</span>
+</nav>
+<div class="container">
+    <div class="main card m-3 ">
+        <h5 class="card-header">Registration Form</h5>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" class="form-inline" novalidate>
+
+                <div class="col">
+                    <label>User Name</label>
+                    <input type="text" name="usenname" class="form-control" [(ngModel)]="user.username"
+                        #username="ngModel" required>
+                    <div class="alert alert-danger" [hidden]="username.valid || username.pristine">
+                        User Name is required
+                    </div>
+                </div>
+                <div class="col">
+                    <label>Email</label>
+                    <input type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel"
+                        required>
+                    <div class="alert alert-danger" [hidden]="email.valid || email.pristine">
+                        Email is required</div>
+                </div>
+                <div class="col">
+                    <label>Phone</label>
+                    <input type="text" name="phone" class="form-control" [(ngModel)]="user.phone" #phone="ngModel"
+                        required>
+                    <div class="alert alert-danger" [hidden]="phone.valid || phone.pristine">
+                        Phone is required</div>
+                </div>
+
+                <div class="text-center">
+                    <button (click)="userForm.resetForm()" class="btn btn-secondary p-2" type="reset">Cancel</button>
+                    <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary m-3 p-2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="m-3 p-3" [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+            <div class="col-xs-3">User Name</div>
+            <div class="col-xs-9">{{ user.username }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Email</div>
+            <div class="col-xs-9">{{ user.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">Phone</div>
+            <div class="col-xs-9">{{ user.phone }}</div>
+        </div>
+    </div>
+</div>

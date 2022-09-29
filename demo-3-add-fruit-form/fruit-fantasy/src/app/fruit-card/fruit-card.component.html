@@ -1,0 +1,13 @@
+<a href="#">
+    <mat-card mat-ripple [matRippleCentered]="true" class="card-content">
+        <img src="../../assets/fruits/{{fruit?.name}}.jpg" alt="" width="280px" height="250px">
+        <mat-card-content>
+            <h4>{{fruit?.name}}</h4>
+            ${{fruit?.price}} per {{fruit?.unit}}
+        </mat-card-content>
+        <mat-card-actions>
+            <button color="warn" mat-icon-button><mat-icon>favorite</mat-icon></button>
+            <button color="accent" mat-icon-button><mat-icon>delete</mat-icon></button>
+        </mat-card-actions>
+    </mat-card>
+</a>

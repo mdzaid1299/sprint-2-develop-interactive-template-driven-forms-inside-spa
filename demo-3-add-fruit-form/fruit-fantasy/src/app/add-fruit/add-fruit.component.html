@@ -1,0 +1,31 @@
+<div id="add-fruit">
+    <form (ngSubmit)="onSubmit(addForm)" #addForm="ngForm" novalidate>
+        <mat-form-field class="input-field" appearance="legacy">
+            <input matInput name="fruitname" [(ngModel)]="fruit.name" type="text"
+                placeholder="Name">
+        </mat-form-field>
+        <mat-form-field class="input-field" appearance="legacy">
+            <input matInput name="fruit.price" [(ngModel)]="fruit.price" type="text" placeholder="Price ($)">
+        </mat-form-field>
+        <mat-form-field class="input-field" appearance="legacy">
+            <input matInput name="fruit.unit" [(ngModel)]="fruit.unit" type="text"
+                placeholder="Unit (pound / piece)">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Nutrients</mat-label>
+            <mat-select id="nutrient" name="nutrient" [(ngModel)]="fruit.nutrients" multiple>
+                <mat-option *ngFor="let nutrient of nutrients" [value]="nutrient">{{nutrient}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Benefits</mat-label>
+            <mat-select id="benefit" name="benefit" [(ngModel)]="fruit.benefits" multiple>
+                <mat-option *ngFor="let benefit of benefits" [value]="benefit">{{benefit}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button color="primary" mat-fab type="submit">
+            <mat-icon>add</mat-icon>
+        </button>
+
+    </form>
+</div>
